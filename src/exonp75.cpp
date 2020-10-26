@@ -69,35 +69,47 @@ void printGistogramm(double* arr /*array where to look*/, int* a /*size of array
 	
 	double step;
 
+	// there is 10 symbols on left and right sides of axis and 1 symbol for axis
+	// we find maximum not depended on sign and divide it by 10 to get step for 1 symbol unit 
+
+	// по десять символов с каждой из сторон от оси + один для оси
+	// находим максимально большое число в независимости от знака и делим его на 10, что бы найти шаг для одного символа
 	if (abs(findMax(arr, a)) < abs(findMin(arr, a)))
 		step = abs(findMin(arr, a)) / 10;
 	else
 		step = abs(findMax(arr, a)) / 10;
 
 	for (int i = 0; i < *a; i++) {
-		int count = ceil((abs(arr[i]) - fmod(arr[i], step)) / step);
+
+		// кол-во символов считается как текущее значение поделить на шаг, однако что бы не потерять ничего и получить целое число мы отнимим от текущего числа остаток от деления еге самого на шаг и после этого сам результат уже поделим на шаг (ето нужно что бы в итоге получилось не дробное число) 
+		// amount of symbols we count by dividing current number by step, but to get integer number we firstly subtract remainder of the division from current number then divide result by step (it's needed to get still (integer) number)
+		int count = ceil((abs(arr[i]) - fmod(arr[i], step)) / step); 
+
 		setColor(11); //you can ignore it
 		printf("\n \t Day %i \t ", i); //print number of day
-		if (arr[i] > 0) { // if measure is lower than 0
-			writeString(' ', 10); // put space
+
+		if (arr[i] > 0) { // if measure is higher than 0
+			writeString(' ', 10); // put space on left side of axis
 			setColor(15); 
 			printf("|"); // print axis
 			setColor(10);
-			writeString(point, count); // print symbol
+			writeString(point, count); // print symbols on right side
 			setColor(13);
 			printf("\t\t %6.2f ", arr[i]);//print value for day
 		} 
+
 		else if (arr[i] == 0) { //number equal to zero
-			writeString(' ', 10); // put space
+			writeString(' ', 10); // put space on left side of axis
 			setColor(15);
 			printf("|"); // print axis
 			setColor(13);
 			printf("\t\t \t\t%6.2f ", arr[i]);//print value for day
 		}
+
 		else {
 			setColor(12); 
-			writeString(' ', 10 - count); // put free of symbols space
-			writeString(point, count); // put symbols that left
+			writeString(' ', 10 - count); // put symbols that are not sharps (subtrack amount of sharps from stotal number of symbols(10 in this case))
+			writeString(point, count); // put symbols that left (sharps)
 			setColor(15);
 			printf("|"); // print axis
 			setColor(13);
