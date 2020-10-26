@@ -182,7 +182,8 @@ void showCommons(double* temp[] /*array where to look*/, int* countOfDays /*size
 
 int exonp75() {
 	system("CLS"); // clear console
-	fflush(stdin); // clear input buffer
+	printf("Press enter\n");
+	while ((getchar()) != '\n'); // clear input buffer
 
 	//creates console window
 	AllocConsole();
