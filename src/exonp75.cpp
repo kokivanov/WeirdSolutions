@@ -64,11 +64,13 @@ void printGistogramm(double* arr /*array where to look*/, int* a /*size of array
 	
 	for (int i = 0; i < *a; i++) {
 		setColor(11); //you can ignore it
-		printf("\n \t Day %i \t ", i); //напичатать номер дня
+		printf("\n \t Day %i \t ", i); //print number of day
 		setColor(10); //you can ignore it
 		for (int j = 0; j < (ceil(arr[i] - fmod(arr[i], step)) / step)+1 /*count amount of iterations (divide measure by step)*/; j++) { 
 			printf("%c", point);
 		}
+		setColor(13);
+		printf("\t\t %4.2f", arr[i]);//print value for day
 	}
 	setColor(15); //you can ignore it
 
