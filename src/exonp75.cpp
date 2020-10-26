@@ -185,23 +185,23 @@ int exonp75() {
 	printf("Press enter\n");
 	while ((getchar()) != '\n'); // clear input buffer
 
-	//creates console window
+	// creates console window
 	AllocConsole();
 	SetConsoleTitleA("Fucking gistogram");
 
-	//sets localization
+	// sets localization
 	setlocale(LC_ALL, "ru");
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	//sets color to white
+	// sets color to white
 	setColor(15);
 
 	// initialize variables
 	int countOfDays = 0;
 	double max = 0, min = 0, sum = 0, average = 0;
 	
-	// creating dynamic array ===========================================================================================================================
+	// ================================================= creating dynamic array ===========================================================================
 	
 	printf("Enter amount of days \n");
 	if ((scanf_s("%i", &countOfDays) != 1)||((countOfDays <= 0))) { // checking is input valid
