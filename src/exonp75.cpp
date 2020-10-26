@@ -5,6 +5,14 @@
 
 int exonp75();
 
+// =========================== Just writes sybmol defined amount of times ========================================
+
+void writeString(char a/*symbol*/, int b/*how many times to write*/) {
+	for (int i = 0; i < b; i++) {
+		printf("%c", a);
+	}
+}
+
 // =========================== Finding maximum in double array ===================================================
 
 double findMin(double* arr /*array where to look*/, int* n /*size of array*/) {
@@ -58,25 +66,48 @@ void setColor(int k) {
 
 void printGistogramm(double* arr /*array where to look*/, int* a /*size of array*/) {
 	const char point = '#'; // symbol of unit 
-
-	double step = ceil(((findMax(arr, a) - findMin(arr, a)) / 20)*100)/100; // count step (one symbol = (max - min)/amount_of_symbols 
-	//and roud up tp hundred)
 	
+	double step;
+
+	if (abs(findMax(arr, a)) < abs(findMin(arr, a)))
+		step = abs(findMin(arr, a)) / 10;
+	else
+		step = abs(findMax(arr, a)) / 10;
+
 	for (int i = 0; i < *a; i++) {
+		int count = ceil((abs(arr[i]) - fmod(arr[i], step)) / step);
 		setColor(11); //you can ignore it
 		printf("\n \t Day %i \t ", i); //print number of day
-		setColor(10); //you can ignore it
-		for (int j = 0; j < (ceil(arr[i] - fmod(arr[i], step)) / step)+1 /*count amount of iterations (divide measure by step)*/; j++) { 
-			printf("%c", point);
+		if (arr[i] > 0) { // if measure is lower than 0
+			writeString(' ', 10); // put space
+			setColor(15); 
+			printf("|"); // print axis
+			setColor(10);
+			writeString(point, count); // print symbol
+			setColor(13);
+			printf("\t\t %6.2f ", arr[i]);//print value for day
+		} 
+		else if (arr[i] == 0) { //number equal to zero
+			writeString(' ', 10); // put space
+			setColor(15);
+			printf("|"); // print axis
+			setColor(13);
+			printf("\t\t \t\t%6.2f ", arr[i]);//print value for day
 		}
-		setColor(13);
-		printf("\t\t %4.2f", arr[i]);//print value for day
+		else {
+			setColor(12); 
+			writeString(' ', 10 - count); // put free of symbols space
+			writeString(point, count); // put symbols that left
+			setColor(15);
+			printf("|"); // print axis
+			setColor(13);
+			printf("\t\t \t\t%6.2f ", arr[i]);//print value for day
+		}
 	}
+
 	setColor(15); //you can ignore it
 
-	printf("\n \t \t \t \t Step is %f  ", step); // print step
-
-	printf("\n");
+	printf("\n Step: \t %.3f \n", abs(findMax(arr, a)/10)); // print step
 }
 
 // ========================== Prints commomn information (minimal, maximum and average temperature) =================================================
@@ -95,7 +126,6 @@ void showCommons(double* temp[] /*array where to look*/, int* countOfDays /*size
 	printf("\t %.3f \n", findMax(*temp, countOfDays));
 	setColor(15); //sets color to white
 }
-
  // ========================== exonp75 FUNCTION ================================
 
 int exonp75() {
