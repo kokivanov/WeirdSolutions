@@ -99,14 +99,14 @@ void showCommons(double* temp[] /*array where to look*/, int* countOfDays /*size
 int exonp75() {
 
 	//creates console window
-	//AllocConsole();
-	//SetConsoleTitleA("WeirdSolutions");
+	AllocConsole();
+	SetConsoleTitleA("WeirdSolutions");
 
 	//sets localization
-	//setlocale(LC_ALL, "ru");
+	setlocale(LC_ALL, "ru");
 
 	//sets color to white
-	//setColor(15);
+	setColor(15);
 
 	// initialize variables
 	int countOfDays = 0;
