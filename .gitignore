@@ -17,3 +17,8 @@ Debug/WeirdSolutions.log
 Debug/WeirdSolutions.ilk
 Debug/vc142.pdb
 Debug/vc142.idb
+*.obj
+*.ipch
+*.obj
+*.enc
+*.obj
