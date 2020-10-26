@@ -82,7 +82,7 @@ void printGistogramm(double* arr /*array where to look*/, int* a /*size of array
 	for (int i = 0; i < *a; i++) {
 
 		// кол-во символов считается как текущее значение поделить на шаг, однако что бы не потерять ничего и получить целое число мы отнимим от текущего числа остаток от деления еге самого на шаг и после этого сам результат уже поделим на шаг (ето нужно что бы в итоге получилось не дробное число) 
-		// amount of symbols we count by dividing current number by step, but to get integer number we firstly subtract remainder of the division from current number then divide result by step (it's needed to get still (integer) number)
+		// amount of symbols we count by dividing current number by step, but to get integer number we firstly subtract remainder of the division on step from current number then divide result by step (it's needed to get still (integer) number)
 		int count = ceil((abs(arr[i]) - fmod(arr[i], step)) / step); 
 
 		setColor(11); //you can ignore it
