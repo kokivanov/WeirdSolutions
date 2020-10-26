@@ -86,7 +86,7 @@ void printGistogramm(double* arr /*array where to look*/, int* a /*size of array
 		int count = ceil((abs(arr[i]) - fmod(arr[i], step)) / step); 
 
 		setColor(11); //you can ignore it
-		printf("\n \t Day %i \t ", i); //print number of day
+		printf("\n \t Day %2i \t ", i); //print number of day
 
 		if (arr[i] > 0) { // if measure is higher than 0
 			writeString(' ', 10); // put space on left side of axis
