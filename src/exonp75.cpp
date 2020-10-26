@@ -95,7 +95,8 @@ void printGistogramm(double* arr /*array where to look*/, int* a /*size of array
 			setColor(10);
 			writeString(point, count); // print symbols on right side
 			setColor(13);
-			printf("\t\t %6.2f ", arr[i]);//print value for day
+			writeString(' ', 10 - count); //  print symbols that left (total number(in this case 10) - printed)
+			printf("\t %8.2f ", arr[i]);//print value for day
 		} 
 
 		else if (arr[i] == 0) { //number equal to zero
@@ -103,7 +104,8 @@ void printGistogramm(double* arr /*array where to look*/, int* a /*size of array
 			setColor(15);
 			printf("|"); // print axis
 			setColor(13);
-			printf("\t\t \t\t%6.2f ", arr[i]);//print value for day
+			writeString(' ', 10); // put space on right
+			printf("\t %8.2f ", arr[i]);//print value for day
 		}
 
 		else {
@@ -113,13 +115,14 @@ void printGistogramm(double* arr /*array where to look*/, int* a /*size of array
 			setColor(15);
 			printf("|"); // print axis
 			setColor(13);
-			printf("\t\t \t\t%6.2f ", arr[i]);//print value for day
+			writeString(' ', 10); // put space on right
+			printf("\t %8.2f ", arr[i]);//print value for day
 		}
 	}
 
 	setColor(15); //you can ignore it
 
-	printf("\n Step: \t %.3f \n", abs(findMax(arr, a)/10)); // print step
+	printf("\n \n \t \t Step: \t %.3f \n", abs(findMax(arr, a)/10)); // print step
 }
 
 // ========================== Prints commomn information (minimal, maximum and average temperature) =================================================
