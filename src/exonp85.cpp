@@ -62,7 +62,7 @@ bool isSimple(int n) {
 	return true;
 }
 
-// ========================================	Sorts and prints array, all simple numbers will be colored in red =============================================
+// ========================================	prints array, all simple numbers will be colored in red =============================================
 void markSimpleNumber(int arr[], int n) {
 
 	printf("\n Sorted array, simple numbers is marked by red color:\n ");
@@ -91,27 +91,27 @@ int exonp85() {
 
 	printf("Enter array size:\n");
 	int n;
-	if (scanf_s("%d", &n) != 1) {
+	if (scanf_s("%d", &n) != 1) { // checks for valid input
 		printf("Input error\n");
 		system("pause");
 		return 0;
 	}
 
-	int* table = new int[n];
+	int* table = new int[n]; // Init array
 
-	srand(time(NULL));
+	srand(time(NULL)); // Make rand() more random
 
 	for (int i = 0; i < n; i++)
-		table[i] = rand() % 100;
+		table[i] = (rand() % 200) - 100; // fills array with random numbers from -99 to 99
 
 	printf("Current array: \n");
-	printArr(table, n);
+	printArr(table, n); // prints current generated array
 	printf("\n");
 
-	sortByDescending(table, n);
+	sortByDescending(table, n); // sorts arry by descending (from higest tot lowest)
 
 	printf("\n");
-	markSimpleNumber(table, n);
+	markSimpleNumber(table, n); // prints array, all simple numbers will be colored in red
 	printf("\n");
 
 	system("pause");
