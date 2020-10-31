@@ -1,5 +1,5 @@
-int exonp75();
+int exonp85();
 
 int main() {
-	exonp75();
+	exonp85();
 }

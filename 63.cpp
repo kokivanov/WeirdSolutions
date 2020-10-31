@@ -1,7 +1,4 @@
-#include <windows.h>
-#include <stdio.h>
-#include <iostream>
-#include <cmath>
+#include "Header.h"
 
 #define LOG(x) std::cout << x;  
 

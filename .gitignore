@@ -22,3 +22,5 @@ Debug/vc142.idb
 *.obj
 *.enc
 *.obj
+*.obj
+Debug/Main.obj

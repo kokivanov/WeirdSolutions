@@ -1,7 +1,4 @@
-#include <windows.h>
-#include <stdio.h>
-#include <iostream>
-#include <cmath>
+#include "Header.h"
 
 #define MAX_TEMPERATURE 60
 #define MIN_TEMPERATURE -90
@@ -68,13 +65,7 @@ double average_(double* arr /*array where to look*/, int* n /*size of array*/) {
 
 // ========================== Changes color of text in console =================================================
 // you can ignore it
-void setColor(int k) {
-
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-
-	SetConsoleTextAttribute(hConsole, k);
-
-}
+void setColor(int k);
 
  // ========================== Prints gistogram of given array =================================================
 
@@ -86,8 +77,8 @@ void printGistogramm(double* arr /*array where to look*/, int* a /*size of array
 	// there is 10 symbols on left and right sides of axis and 1 symbol for axis
 	// we find maximum not depended on sign and divide it by 10 to get step for 1 symbol unit 
 
-	// по десять символов с каждой из сторон от оси + один для оси
-	// находим максимально большое число в независимости от знака и делим его на 10, что бы найти шаг для одного символа
+	// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ + пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ 10, пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if (abs(findMax(arr, a)) < abs(findMin(arr, a)))
 		step = abs(findMin(arr, a)) / 10;
 
@@ -99,7 +90,7 @@ void printGistogramm(double* arr /*array where to look*/, int* a /*size of array
 	// for each element of array
 	for (int i = 0; i < *a; i++) {
 
-		// кол-во символов считается как текущее значение поделить на шаг, однако что бы не потерять ничего и получить целое число мы отнимим от текущего числа остаток от деления еге самого на шаг и после этого сам результат уже поделим на шаг (ето нужно что бы в итоге получилось не дробное число) 
+		// пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ (пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ) 
 		// amount of symbols we count by dividing current number by step, but to get integer number we firstly subtract remainder of the division on step from current number then divide result by step (it's needed to get still (integer) number)
 		int count = floor((abs(arr[i]) - fmod(arr[i], step)) / step); 
 
@@ -207,6 +198,14 @@ int exonp75() {
 	if ((scanf_s("%i", &countOfDays) != 1)||((countOfDays <= 0))) { // checking is input valid
 
 		printf("Oops.. you did wrong, so CATCH AN ERRROR NOOB AND TRY AGAIN!!!!!\n");
+		system("pause");
+		exonp75();
+
+	}
+
+	if (countOfDays > 31){
+
+		printf("Oops.. looks like you aren't from eart, so CATCH AN ERRROR NOOB AND TRY AGAIN!!!!!\n");
 		system("pause");
 		exonp75();
 
