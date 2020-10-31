@@ -24,3 +24,4 @@ Debug/vc142.idb
 *.obj
 *.obj
 Debug/Main.obj
+*.obj
