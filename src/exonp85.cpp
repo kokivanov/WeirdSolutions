@@ -1,7 +1,7 @@
 #include "headers/Header.h"
 
 
-//	=========================================   Main() is defined in main.cpp Main function in this file is "exonp85()"   ===================================================
+//	=========================================   Main() is defined in main.cpp Main function in this file is "exonp85()" read README.md in root directory for more information   ===================================================
 
 void setColor(int k); // ===== Defined in consoleinterface.cpp =====
 
