@@ -50,26 +50,30 @@ void sortByDescending(int arr[], int n) {
 }
 
 // ========================================	Checks is number simple =============================================
-bool isSimple(int n) {
+bool isIdeal(int n) {
 
-	if (n == 2)
+	int sum = 0;
+
+	for (int j = 1; j < n; j++) {
+
+		if (n % j == 0)
+			sum += j;
+	}
+
+	if (sum == n)
 		return true;
 
-	for (int i = 2; i < sqrt(abs(n))+1; i++)
-		if (abs(n) % i == 0)
-			return false;
-
-	return true;
+	return false;
 }
 
 // ========================================	prints array, all simple numbers will be colored in red =============================================
-void markSimpleNumber(int arr[], int n) {
+void markIdealNumber(int arr[], int n) {
 
-	printf("\n Sorted array, simple numbers is marked by red color:\n ");
+	printf("\n Sorted array, simple numbers are marked by red color:\n ");
 
 	for (int i = 0; i < n; i++) {
 
-		if (isSimple(arr[i])) {
+		if (isIdeal(arr[i])) {
 
 			setColor(12);
 			printf("%i \t", arr[i]);
@@ -102,7 +106,7 @@ int exonp85() {
 	srand(time(NULL)); // Make rand() more random
 
 	for (int i = 0; i < n; i++)
-		table[i] = (rand() % 200) - 100; // fills array with random numbers from -99 to 99
+		table[i] = rand() % 100000;
 
 	printf("Current array: \n");
 	printArr(table, n); // prints current generated array
@@ -111,7 +115,7 @@ int exonp85() {
 	sortByDescending(table, n); // sorts arry by descending (from higest tot lowest)
 
 	printf("\n");
-	markSimpleNumber(table, n); // prints array, all simple numbers will be colored in red
+	markIdealNumber(table, n); // prints array, all simple numbers will be colored in red
 	printf("\n");
 
 	system("pause");
