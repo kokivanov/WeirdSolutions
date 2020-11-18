@@ -30,9 +30,15 @@ int findMaxPos(int arr[], int a, int b) {
 // ========================================	Swaps two elements in array by position =============================================
 void swap(int arr[], int a, int b) {
 
-	int tmp = arr[a];
-	arr[a] = arr[b];
-	arr[b] = tmp;
+	/*int tmp = arr[a] = arr[b];
+	arr[b] = tmp;*/
+
+	if (arr[a] != arr[b])
+	{
+		arr[a] ^= arr[b];
+		arr[b] ^= arr[a];
+		arr[a] ^= arr[b];
+	}
 }
 
 // ============================================ Sorts array from highest to lowest =====================================================

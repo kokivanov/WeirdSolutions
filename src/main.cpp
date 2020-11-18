@@ -1,5 +1,5 @@
-int exonp85();
+int exMatrix();
 
-int main() {
-	exonp85();
-}
+/*int main() {
+	exMatrix();
+}*/
