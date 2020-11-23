@@ -1,5 +1,5 @@
-int exMatrix();
+int q_sort();
 
-/*int main() {
-	exMatrix();
-}*/
+int main() {
+	q_sort();
+}
