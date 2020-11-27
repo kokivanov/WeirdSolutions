@@ -1,6 +1,8 @@
 #include "headers/Header.h"
 
-const double e = 2.718;
+const double e = 2.718; // math const e
+
+// ========================= Utility element ================================
 namespace elas {
 	struct elem {
 		int x;
@@ -16,6 +18,8 @@ namespace elas {
 	}
 
 }
+
+// ================================ fills array
 void fillArray(double* arr, int a) {
 	for (int i = 0; i < a; i++) {
 		arr[i] = (rand() % 10000);
@@ -23,6 +27,7 @@ void fillArray(double* arr, int a) {
 	}
 }
 
+// ================================ prints array
 void printArray(double* arr, int a) {
 	for (int i = 0; i < a; i++) {
 		printf("%6.3f \t", arr[i]);
@@ -30,16 +35,19 @@ void printArray(double* arr, int a) {
 	printf("\n");
 }
 
+// ============================ fills array with matching elements of another array calculeted by given function
 void fillWith(double* arr, double* arr2, int a, double (*func)(double, int)) {
 	for (int i = 0; i < a; i++) {
 		arr[i] = func(arr2[i], a);
 	}
 }
 
+// ============================= Function to calculate elements of array
 double func(double arr, int a) {
 	return log10(arr)/atan(e * a / 10);
 }
 
+// ============================= Checks does element belongs array 
 bool isIn(int a, elas::elem* COD, elas::elem tmp) {
 	for (int i = 0; i < a; i++) {
 		if ((COD[i].x == tmp.x) && (COD[i].y == tmp.y)) return true;
@@ -48,9 +56,10 @@ bool isIn(int a, elas::elem* COD, elas::elem tmp) {
 	return false;
 }
 
-int main() {
+// ================================ Main function
+void exonp95() {
 
-	srand(time(nullptr));
+	srand(time(nullptr)); // random
 
 	int n;
 	printf("Enter 1d array size: ");
@@ -60,16 +69,18 @@ int main() {
 	}
 	printf("\n");
 
+	// allocate arrays using malloc()
 	double* arr = (double*)malloc((size_t)(n*sizeof(double)));
 	double* arr2 = (double*)malloc((size_t)(n*sizeof(double)));
 
-	fillArray(arr, n);
-	fillWith(arr2, arr, n, &func);
+	fillArray(arr, n); // fills array with random numbers
+	fillWith(arr2, arr, n, &func); // fills array using function
 	printf("a array: \n");
-	printArray(arr, n);
+	printArray(arr, n); // lol rly?
 	printf("f(a[n]) array: \n");
-	printArray(arr2, n);
+	printArray(arr2, n); // same
 
+	// free allocated arrays
 	free(arr);
 	free(arr2);
 
@@ -97,12 +108,14 @@ int main() {
 		std::cin.get();
 	}
 
-	elas::elem* coords = new elas::elem[nc];
+	elas::elem* coords = new elas::elem[nc]; // array with biggest elements
 
+	// allocating array using new
 	double** arr_2d = new double* [ny];
 	for (int i = 0; i < ny; i++) {
 		arr_2d[i] = new double[nx];
 	}
+
 
 	for (int i = 0; i < ny; i++) {
 		for (int j = 0; j < nx; j++) {
@@ -139,6 +152,8 @@ int main() {
 		}
 	} else printf("Amount of biggest elements can't be higher than total amount of elements");
 
+
+	// free allocated arrays
 	delete[] coords;
 
 	for (int i = 0; i < ny; i++) {
@@ -146,5 +161,6 @@ int main() {
 	}
 	delete[] arr_2d;
 
+	// prevent application from  closing
 	system("pause");
 }
