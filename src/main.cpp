@@ -1,5 +1,5 @@
-int q_sort();
-
-int main() {
-	q_sort();
-}
+//int exonp95();
+//
+//int main() {
+//	exonp95();
+//}

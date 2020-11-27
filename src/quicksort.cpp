@@ -58,7 +58,7 @@ int part(arr* mass, int left, int right) {  //  separate array and get separatio
 
 }
 
-void sort(arr* mass, int left, int right, int iter) { // main function of sorting
+void sort(arr* mass, int left, int right) { // main function of sorting
 	if (left == right) return;
 
 	if (right-left <= 1) { // checks is amount of elements lower that or equal to 2
@@ -68,8 +68,8 @@ void sort(arr* mass, int left, int right, int iter) { // main function of sortin
 	}
 	else {
 		int prt = part(mass, left, right); // get partition index
-		sort(mass, 0, prt, iter+1); // do the same with the left part of array in recursion
-		sort(mass, prt+2, right, iter+1); // do the same with the right part of array in recursion
+		sort(mass, 0, prt); // do the same with the left part of array in recursion
+		sort(mass, prt+2, right); // do the same with the right part of array in recursion
 	}
 
 	// so array will be divided many times till avery part has size of 2 or 1 elements
@@ -106,7 +106,7 @@ int q_sort() {
 	fill_arr(&mass);
 	print_arr(&mass);
 
-	sort(&mass, 0, mass.size-1, 0);
+	sort(&mass, 0, mass.size-1);
 	print_arr(&mass);
 
 	auto end = std::chrono::steady_clock::now(); // get time of end program 

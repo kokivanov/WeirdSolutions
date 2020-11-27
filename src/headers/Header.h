@@ -6,6 +6,9 @@
 #include <cmath>
 #include <ctime>
 #include <chrono>
+#include <utility>
+#include <vector>
+#include <iterator>
 
 #ifndef SET_COLOR
 #define SET_COLOR
