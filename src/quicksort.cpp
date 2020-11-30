@@ -113,7 +113,7 @@ int q_sort() {
 
 	double elasped_time = double(std::chrono::duration_cast <std::chrono::nanoseconds> (end - start).count()); // count time elapsed since program start
 
-	printf("Elapsed time (ms): %.3f \n", elasped_time / 1e6);
+	printf("\nElapsed time (ms): %.3f \n", elasped_time / 1e6);
 	
 	setColor(12);
 	printf("\nIs array sorted correctly (1 - true, 0 - false): %i\n", checkarray(&mass)); // checks is srray sorted correctly 

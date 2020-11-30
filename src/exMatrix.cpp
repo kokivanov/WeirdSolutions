@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <string>
+#include "headers/Header.h"
 
 #define INVALID "Invalid size"
 #define CORRECT "Correct size"
@@ -52,15 +48,13 @@ void printArray(struct Matrix matrix) {
     }
     printf("\n");
 }
-void freeMatrix(struct Matrix *matrix) {
-  //Free all rows
-  for (int i = 0; i < matrix->rows; ++i) {
-    free(matrix->values[i]);
+void free_M(struct Matrix *arr) {
+  for (int i = 0; i < arr->rows; ++i) {
+    free(arr->values[i]);
   }
-  //Free matrix 
-  free(matrix->values);
+  free(arr->values);
 }
-int exMatrix() {
+void exMatrix() {
     printf("Please enter the size of matrix\n");
     struct Matrix mainMatrix = enterMatrixSize();
     printf("Test matrix rows %4d\n", mainMatrix.rows);
@@ -69,17 +63,24 @@ int exMatrix() {
 
     if (strcmp(mainMatrix.status, INVALID) == 0) {
       printf("Label 0\n");
-      return -1;
     }
+
+    auto start = std::chrono::steady_clock::now(); // get time of start program
+
     int counter = 100000;
-    struct Matrix *matrixPointer = &mainMatrix;
     while(counter > 0) {
-        initMatrix(matrixPointer);
+        initMatrix(&mainMatrix);
         printArray(mainMatrix);
-        freeMatrix(matrixPointer);
+        free_M(&mainMatrix);
         // Task: implement freeMatrix(mainMatrix);
         counter--;  
     }
-    return 0;
+
+    auto end = std::chrono::steady_clock::now(); // get time of end program 
+
+    double elasped_time = double(std::chrono::duration_cast <std::chrono::nanoseconds> (end - start).count()); // count time elapsed since program start
+
+    printf("\nElapsed time (ms): %.3f \n", elasped_time / 1e6);
+
 }
 

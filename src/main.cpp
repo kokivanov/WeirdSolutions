@@ -1,5 +1,8 @@
 void exonp95();
+void exonp91();
+void exonp85();
+void exMatrix();
 
 int main() {
-	exonp95();
+	exonp91();
 }

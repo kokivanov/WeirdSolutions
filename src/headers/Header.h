@@ -9,6 +9,8 @@
 #include <utility>
 #include <vector>
 #include <iterator>
+#include <errno.h> 
+#include <string> 
 
 #ifndef SET_COLOR
 #define SET_COLOR

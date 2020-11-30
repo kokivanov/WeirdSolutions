@@ -61,6 +61,8 @@ void exonp95() {
 
 	srand(time(nullptr)); // random
 
+	setColor(2);
+
 	int n;
 	printf("Enter 1d array size: ");
 	if (scanf_s("%d", &n) != 1) {
@@ -69,6 +71,7 @@ void exonp95() {
 	}
 	printf("\n");
 
+	auto start = std::chrono::steady_clock::now(); // get time of start program
 	// allocate arrays using malloc()
 	double* arr = (double*)malloc((size_t)(n*sizeof(double)));
 	double* arr2 = (double*)malloc((size_t)(n*sizeof(double)));
@@ -83,6 +86,13 @@ void exonp95() {
 	// free allocated arrays
 	free(arr);
 	free(arr2);
+
+	auto end = std::chrono::steady_clock::now(); // get time of end program 
+
+	double elasped_time = double(std::chrono::duration_cast <std::chrono::nanoseconds> (end - start).count()); // count time elapsed since program start
+
+	printf("\nElapsed time (ms): %.3f \n", elasped_time / 1e6);
+
 
 	int nx, ny, nc;
 	printf("\nElnter amount of rows: ");
@@ -108,6 +118,9 @@ void exonp95() {
 		std::cin.get();
 	}
 
+	start = std::chrono::steady_clock::now(); // get time of start program
+
+
 	elas::elem* coords = new elas::elem[nc]; // array with biggest elements
 
 	// allocating array using new
@@ -115,7 +128,6 @@ void exonp95() {
 	for (int i = 0; i < ny; i++) {
 		arr_2d[i] = new double[nx];
 	}
-
 
 	for (int i = 0; i < ny; i++) {
 		for (int j = 0; j < nx; j++) {
@@ -152,7 +164,6 @@ void exonp95() {
 		}
 	} else printf("Amount of biggest elements can't be higher than total amount of elements");
 
-
 	// free allocated arrays
 	delete[] coords;
 
@@ -160,6 +171,12 @@ void exonp95() {
 		delete[] arr_2d[i];
 	}
 	delete[] arr_2d;
+
+	end = std::chrono::steady_clock::now(); // get time of end program 
+
+	elasped_time = double(std::chrono::duration_cast <std::chrono::nanoseconds> (end - start).count()); // count time elapsed since program start
+
+	printf("\nElapsed time (ms): %.3f \n", elasped_time / 1e6);
 
 	// prevent application from  closing
 	system("pause");

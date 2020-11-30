@@ -28,7 +28,7 @@ int findMaxPos(int arr[], int a, int b) {
 }
 
 // ========================================	Swaps two elements in array by position =============================================
-void swap(int arr[], int a, int b) {
+void swap(int* arr, int a, int b) {
 
 	/*int tmp = arr[a] = arr[b];
 	arr[b] = tmp;*/
@@ -91,7 +91,7 @@ void markIdealNumber(int arr[], int n) {
 }
 
 // ========================================	this function will be called in main.cpp =============================================
-int exonp85() {
+void exonp85() {
 	// creates console window
 	AllocConsole();
 	SetConsoleTitleA("Simpliest task scince last month");
@@ -104,8 +104,9 @@ int exonp85() {
 	if (scanf_s("%d", &n) != 1) { // checks for valid input
 		printf("Input error\n");
 		system("pause");
-		return 0;
 	}
+
+	auto start = std::chrono::steady_clock::now(); // get time of start program
 
 	int* table = new int[n]; // Init array
 
@@ -124,6 +125,12 @@ int exonp85() {
 	markIdealNumber(table, n); // prints array, all simple numbers will be colored in red
 	printf("\n");
 
+	auto end = std::chrono::steady_clock::now(); // get time of end program 
+
+	double elasped_time = double(std::chrono::duration_cast <std::chrono::nanoseconds> (end - start).count()); // count time elapsed since program start
+
+	printf("\nElapsed time (ms): %.3f \n", elasped_time / 1e6);
+
+
 	system("pause");
-	return 1;
 }
